@@ -19,8 +19,24 @@ Refer to this [documentation page](https://docs.microsoft.com/en-us/azure/azure-
 
 For project specific configuration, you will need to do the following:
 
+Create a `local.settings.json` file in the repo root with the following content:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "PEOPLE_DATAFILE_URL": "https://<your-storage>.blob.core.windows.net/<path>/people.json",
+    "PLANETS_DATAFILE_URL": "https://<your-storage>.blob.core.windows.net/<path>/planets.json",
+    "FILMS_DATAFILE_URL": "https://<your-storage>.blob.core.windows.net/<path>/films.json"
+  }
+}
+```
+
 1. The three data files in the \Data folder need to uploaded to Azure File storage. 
 2. The three *_DATAFILE_URL fields in the `local.settings.json` file are set to where the files are uploaded to in Azure.
+    - The sample file above provides a rough idea of what the URLs will look like.
 
 ## How to deploy
 
